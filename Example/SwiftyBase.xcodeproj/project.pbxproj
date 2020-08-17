@@ -29,9 +29,11 @@
 
 /* Begin PBXFileReference section */
 		00FB585FF04D19AFD3145C63 /* Pods-SwiftyBase_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyBase_Example.debug.xcconfig"; path = "Target Support Files/Pods-SwiftyBase_Example/Pods-SwiftyBase_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		016CAFB5E0D99E13A5E5A299 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		02A9BE3A5670BCA3511D6395 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		016CAFB5E0D99E13A5E5A299 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		02A9BE3A5670BCA3511D6395 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		2DAFB101A789DE5690A401F3 /* Pods-SwiftyBase_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyBase_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyBase_Tests/Pods-SwiftyBase_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3A79332B94D8FF49A7AD9800 /* Pods_SwiftyBase_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyBase_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4175F7EE4C5D26BE7E1499ED /* Pods-SwiftyBase_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyBase_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyBase_Example/Pods-SwiftyBase_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SwiftyBase_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyBase_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,8 +47,10 @@
 		6D0E7E5773A637CF69EDD2C1 /* Pods-SwiftyBase_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyBase_Tests.release.xcconfig"; path = "Target Support Files/Pods-SwiftyBase_Tests/Pods-SwiftyBase_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A18DF6516F543E7874BF9DC4 /* Pods-SwiftyBase_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyBase_Example.release.xcconfig"; path = "Target Support Files/Pods-SwiftyBase_Example/Pods-SwiftyBase_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B20C659A4668EB2C955118EB /* Pods-SwiftyBase_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyBase_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftyBase_Tests/Pods-SwiftyBase_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C837A6795B40C0241AD8DD25 /* SwiftyBase.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SwiftyBase.podspec; path = ../SwiftyBase.podspec; sourceTree = "<group>"; };
+		B23C7015FBDEB7FD49EE714C /* Pods-SwiftyBase_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyBase_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyBase_Example/Pods-SwiftyBase_Example.release.xcconfig"; sourceTree = "<group>"; };
+		C837A6795B40C0241AD8DD25 /* SwiftyBase.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftyBase.podspec; path = ../SwiftyBase.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DCA5D59EC9CBC1A810031DD4 /* Pods_SwiftyBase_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyBase_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9D761EF7C86CFB6F9828B8D /* Pods-SwiftyBase_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyBase_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyBase_Tests/Pods-SwiftyBase_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,8 +159,11 @@
 				A18DF6516F543E7874BF9DC4 /* Pods-SwiftyBase_Example.release.xcconfig */,
 				B20C659A4668EB2C955118EB /* Pods-SwiftyBase_Tests.debug.xcconfig */,
 				6D0E7E5773A637CF69EDD2C1 /* Pods-SwiftyBase_Tests.release.xcconfig */,
+				4175F7EE4C5D26BE7E1499ED /* Pods-SwiftyBase_Example.debug.xcconfig */,
+				B23C7015FBDEB7FD49EE714C /* Pods-SwiftyBase_Example.release.xcconfig */,
+				F9D761EF7C86CFB6F9828B8D /* Pods-SwiftyBase_Tests.debug.xcconfig */,
+				2DAFB101A789DE5690A401F3 /* Pods-SwiftyBase_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +234,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -267,15 +275,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SwiftyBase_Example-checkManifestLockResult.txt",
 			);
@@ -289,15 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SwiftyBase_Tests-checkManifestLockResult.txt",
 			);
@@ -313,11 +313,23 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SwiftyBase_Example/Pods-SwiftyBase_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBase/SwiftyBase.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

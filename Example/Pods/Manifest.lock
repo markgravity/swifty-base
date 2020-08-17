@@ -1,0 +1,45 @@
+PODS:
+  - PromisesObjC (1.2.8)
+  - PromisesSwift (1.2.8):
+    - PromisesObjC (= 1.2.8)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
+  - SwiftyBase (0.1.0):
+    - PromisesSwift
+    - RxCocoa
+    - RxSwift
+    - Swinject
+  - Swinject (2.7.1)
+
+DEPENDENCIES:
+  - SwiftyBase (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - PromisesObjC
+    - PromisesSwift
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - Swinject
+
+EXTERNAL SOURCES:
+  SwiftyBase:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  SwiftyBase: 83f470dc7d12548dcb334145e8af5a317e0c3c3c
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
+
+PODFILE CHECKSUM: 7bc742df6701f04beba1d67c4828f0cbafed8b47
+
+COCOAPODS: 1.8.4
