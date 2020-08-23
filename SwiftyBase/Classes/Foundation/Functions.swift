@@ -12,12 +12,12 @@ import NVActivityIndicatorView
 public typealias VoidHandler = () -> Void
 public func showProgressHUD() {
 
-//    let data = ActivityData.init(type: .circleStrokeSpin)
-//    NVActivityIndicatorPresenter.sharedInstance.startAnimating(data, nil)
+    let data = ActivityData.init(type: .circleStrokeSpin)
+    NVActivityIndicatorPresenter.sharedInstance.startAnimating(data, nil)
 }
 
 public func dismissProgressHUD() {
-//    NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+    NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
 }
 
 #endif
