@@ -48,10 +48,8 @@ open class BaseAppDelegate: UIResponder, UIApplicationDelegate {
         
         bootloader.application(app, open: url, options: options)
     }
-    
-    public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        
-        return bootloader.application(application, continue: userActivity, restorationHandler: restorationHandler)
+    public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        bootloader.application(application, continue: userActivity, restorationHandler: restorationHandler)
     }
     
     public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

@@ -16,7 +16,8 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "13.0",
+    "osx": "10.16"
   },
   "source_files": "SwiftyBase/Classes/**/*",
   "dependencies": {
@@ -31,6 +32,19 @@
     ],
     "Swinject": [
 
+    ],
+    "PureLayout": [
+
+    ],
+    "SwiftRichString": [
+
     ]
+  },
+  "ios": {
+    "dependencies": {
+      "NVActivityIndicatorView": [
+        "~> 4.8.0"
+      ]
+    }
   }
 }

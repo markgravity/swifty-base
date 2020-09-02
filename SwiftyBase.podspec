@@ -28,7 +28,7 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/markgravity/SwiftyBase.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '13.0'
   s.macos.deployment_target = '10.16'
 
   s.source_files = 'SwiftyBase/Classes/**/*'
@@ -43,6 +43,7 @@ TODO: Add long description of the pod here.
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
   s.dependency 'Swinject'
-  s.ios.dependency "NVActivityIndicatorView"
+  s.ios.dependency 'NVActivityIndicatorView', '~> 4.8.0'
   s.dependency "PureLayout"
+  s.dependency "SwiftRichString"
 end

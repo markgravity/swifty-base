@@ -130,7 +130,7 @@ public extension UIView {
         shapeLayer.fillColor = fillColor.cgColor
         shapeLayer.strokeColor = strokeColor.cgColor
         shapeLayer.lineWidth = lineWidth
-        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+        shapeLayer.lineJoin = kCALineJoinRound
         shapeLayer.lineDashPattern = lineDashPattern
         shapeLayer.name = "kShapeDashed"
         shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 5).cgPath
@@ -153,7 +153,7 @@ public extension UIView {
         color: UIColor = .gray,
         position : LoadingIndicatorPosition = .center,
         offset:CGPoint = CGPoint(x: 0, y: 0)){
-        let loadingView = UIActivityIndicatorView(style: style)
+        let loadingView = UIActivityIndicatorView(activityIndicatorStyle: style)
         loadingView.tag = 20795
         loadingView.startAnimating()
         loadingView.translatesAutoresizingMaskIntoConstraints = false

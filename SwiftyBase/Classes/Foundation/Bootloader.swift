@@ -97,7 +97,7 @@ extension Bootloader: UIApplicationDelegate {
         return false
     }
     
-    public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         
         for delegate in _appDelegateRegisters {
             let result = delegate.application?(
