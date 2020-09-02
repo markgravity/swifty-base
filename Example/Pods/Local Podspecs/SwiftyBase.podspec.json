@@ -16,9 +16,10 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "13.0",
+    "ios": "10.0",
     "osx": "10.16"
   },
+  "swift_versions": "5.0",
   "source_files": "SwiftyBase/Classes/**/*",
   "dependencies": {
     "PromisesSwift": [
@@ -46,5 +47,6 @@
         "~> 4.8.0"
       ]
     }
-  }
+  },
+  "swift_version": "5.0"
 }

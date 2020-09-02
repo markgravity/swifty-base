@@ -130,14 +130,14 @@ open class BaseXmlAttributesResolver: StandardXMLAttributesResolver {
         case "u":
             
             let style = Style {
-                $0.underline = (.styleSingle, nil)
+                $0.underline = (.single, nil)
             }
             attributedString.add(style: style)
             
         case "strike":
             
             let style = Style {
-                $0.strikethrough = (.styleSingle, nil)
+                $0.strikethrough = (.single, nil)
             }
             attributedString.add(style: style)
             
