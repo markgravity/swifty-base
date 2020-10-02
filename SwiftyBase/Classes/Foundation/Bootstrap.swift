@@ -18,7 +18,7 @@ public extension PluginRegisterable {
     var isPersistent: Bool { false }
 }
 
-public class Bootloader: NSObject {
+public class Bootstrap: NSObject {
     fileprivate var _persistentRegisters = [PluginRegisterable]()
     fileprivate var _appDelegateRegisters: [PluginRegisterable & UIApplicationDelegate] {
         _persistentRegisters
@@ -61,7 +61,7 @@ public class Bootloader: NSObject {
 }
 
 // MARK: - UIApplicationDelegate
-extension Bootloader: UIApplicationDelegate {
+extension Bootstrap: UIApplicationDelegate {
     
     public func applicationWillResignActive(_ application: UIApplication) {
         _appDelegateRegisters.forEach { $0.applicationWillResignActive?(application) }

@@ -10,6 +10,8 @@ import UIKit
 import NVActivityIndicatorView
 
 public typealias VoidHandler = () -> Void
+public typealias ValueChangedHandler<T> = (_ value: T) -> Void
+
 public func showProgressHUD() {
 
     let data = ActivityData.init(type: .circleStrokeSpin)

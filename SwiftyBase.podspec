@@ -33,17 +33,44 @@ TODO: Add long description of the pod here.
   s.swift_versions = '5.0'
   s.source_files = 'SwiftyBase/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'SwiftyBase' => ['SwiftyBase/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'PromisesSwift'
-  s.dependency 'RxSwift'
-  s.dependency 'RxCocoa'
-  s.dependency 'Swinject'
-  s.ios.dependency 'NVActivityIndicatorView', '~> 4.8.0'
-  s.dependency "PureLayout"
-  s.dependency "SwiftRichString"
+  s.subspec 'App' do |app|
+    app.source_files = 'SwiftyBase/Classes/**/*'
+    app.dependency 'PromisesSwift'
+    app.dependency 'RxSwift'
+    app.dependency 'RxCocoa'
+    app.dependency 'Swinject'
+    app.ios.dependency 'NVActivityIndicatorView', '~> 4.8.0'
+    app.dependency "PureLayout"
+    app.dependency "SwiftRichString"
+    app.dependency 'Alamofire'
+    app.dependency 'ObjectMapper'
+    app.dependency 'SwiftyJSON'
+    app.dependency "Gradients"
+    app.dependency 'L10n-swift'
+    app.dependency 'UIWindowTransitions'
+    app.dependency 'RxSwiftExt'
+    app.dependency 'UIColor_Hex_Swift'
+  end
+  
+  s.subspec 'Extension' do |ext|
+    ext.source_files = 'SwiftyBase/Classes/**/*'
+    ext.exclude_files = [
+    'SwiftyBase/Classes/Foundation/Functions.swift',
+    'SwiftyBase/Classes/Foundation/UI/**/*',
+    'SwiftyBase/Classes/Foundation/Segues/**/*',
+    'SwiftyBase/Classes/Foundation/Extensions/UIView.swift',
+    'SwiftyBase/Classes/Foundation/Extensions/NSLayoutConstraint.swift'
+    ]
+    ext.dependency 'RxSwift'
+    ext.dependency 'RxCocoa'
+    ext.dependency 'Swinject'
+    ext.dependency "SwiftRichString"
+    ext.dependency 'Alamofire'
+    ext.dependency 'ObjectMapper'
+    ext.dependency 'SwiftyJSON'
+    ext.dependency 'L10n-swift'
+    ext.dependency 'RxSwiftExt'
+    ext.dependency 'UIColor_Hex_Swift'
+    ext.dependency 'PromisesSwift'
+  end
 end

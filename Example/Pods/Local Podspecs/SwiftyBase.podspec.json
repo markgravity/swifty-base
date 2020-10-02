@@ -39,6 +39,15 @@
     ],
     "SwiftRichString": [
 
+    ],
+    "Alamofire": [
+
+    ],
+    "ObjectMapper": [
+
+    ],
+    "SwiftyJSON": [
+
     ]
   },
   "ios": {

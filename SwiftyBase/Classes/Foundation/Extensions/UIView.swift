@@ -29,6 +29,7 @@ public extension UIView {
             layer.roundCorners(radius: newValue)
         }
     }
+    
     @IBInspectable var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
@@ -39,6 +40,29 @@ public extension UIView {
             layer.addShadow()
         }
     }
+    
+    @IBInspectable var shadowBlur: CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        
+        set {
+            layer.shadowRadius = newValue / 2
+            layer.addShadow()
+        }
+    }
+    
+//    @IBInspectable var shadowSpread: CGFloat {
+//        get {
+//            return layer.shadowRadius
+//        }
+//        
+//        set {
+//            layer.shadowRadius = newValue / 2
+//            layer.addShadow()
+//        }
+//    }
+    
     @IBInspectable var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
@@ -217,5 +241,66 @@ public extension UIView {
         view.autoPinEdgesToSuperviewEdges()
     }
     
+}
+
+// MARK: Constraints
+public extension UIView {
+    var heightConstraint: NSLayoutConstraint? {
+        constraints
+            .first {
+                $0.firstItem === self
+                    && $0.firstAttribute == .height
+            }
+    }
+    
+    var widthConstraint: NSLayoutConstraint? {
+        constraints
+            .first {
+                $0.firstItem === self
+                    && $0.firstAttribute == .width
+            }
+    }
+    
+    var firstLeftConstraint: NSLayoutConstraint? {
+        superview?.constraints
+            .first {
+                ($0.firstItem === self || $0.secondItem === self)
+                    && $0.firstAttribute == .leading
+            }
+    }
+}
+
+// MARK: - Sketch
+public extension UIView {
+    func applySketchShadow(
+        color: UIColor = .black,
+        alpha: Float = 0.2,
+        x: CGFloat = 0,
+        y: CGFloat = 2,
+        blur: CGFloat = 4,
+        spread: CGFloat = 0)
+    {
+        
+
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = alpha
+        layer.shadowOffset = CGSize(width: x, height: y)
+        layer.shadowRadius = blur / 2
+        if spread == 0 {
+            layer.shadowPath = UIBezierPath(
+                roundedRect: layer.bounds,
+                cornerRadius: 22
+            )
+            .cgPath
+            
+        } else {
+            let dx = -spread
+            let rect = bounds.insetBy(dx: dx, dy: dx)
+            layer.shadowPath = UIBezierPath(
+                roundedRect: rect,
+                cornerRadius: 22
+            ).cgPath
+        }
+    }
 }
 #endif
