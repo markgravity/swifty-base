@@ -31,7 +31,7 @@ public extension Observable {
     }
 }
 
-public extension ObservableType where Element == Bool {
+public extension Observable where Element == Bool {
     func invert() -> Observable<Element> {
         map { !$0 }
     }

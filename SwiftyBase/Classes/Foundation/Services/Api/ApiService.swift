@@ -28,6 +28,14 @@ public protocol ApiService {
         token: String?,
         params: FormDataParametable
     ) -> Promise<ApiResponse>
+    
+    func download(
+        method: HttpMethod,
+        baseUrl: String?,
+        endPoint: String,
+        token: String?,
+        params: HttpParametable
+    ) -> Promise<URL>
 }
 
 
@@ -57,6 +65,22 @@ public extension ApiService {
         params: FormDataParametable
     ) -> Promise<ApiResponse> {
         upload(
+            method: method,
+            baseUrl: baseUrl,
+            endPoint: endPoint,
+            token: token,
+            params: params
+        )
+    }
+    
+    func download(
+        method: HttpMethod,
+        baseUrl: String? = nil,
+        endPoint: String,
+        token: String? = nil,
+        params: HttpParametable
+    ) -> Promise<URL> {
+        download(
             method: method,
             baseUrl: baseUrl,
             endPoint: endPoint,

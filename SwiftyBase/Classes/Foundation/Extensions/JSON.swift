@@ -12,6 +12,7 @@ import Cocoa
 #endif
 
 public typealias JSONDict = [String:Any]
+public typealias JSONArray = [[String:Any]]
 public extension String {
     func toJSONDict() -> JSONDict? {
         guard let data = self.data(using: .utf8) else { return nil }

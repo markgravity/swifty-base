@@ -19,19 +19,21 @@ public protocol Restfultable {
     func info(id: Int?, params: HttpParametable?, token: String?) -> Promise<Object>
     func list(params: HttpParametable?, token: String?) -> Promise<List>
     func create(params: HttpParametable?, token: String?) -> Promise<Object>
-    func update(id: Int?, params: HttpParametable?, token: String?) -> Promise<Void>
+    func update(id: Int?, params: HttpParametable?, token: String?) -> Promise<Object>
     func delete(id: Int?, params: HttpParametable?, token: String?) -> Promise<Void>
 }
 
 // MARK: - RestfulApiService
-public class RestfulApiService<Object: Mappable, List: ListResponsable>: Restfultable {
-    @Inject var api: ApiService
+open class RestfulApiService<Object: Mappable, List: ListResponsable>: Restfultable {
+    @Inject public var api: ApiService
     
-    var baseUrl: String? { nil }
-    var endPoint: String { "" }
+    open var baseUrl: String? { nil }
+    open var endPoint: String { "" }
+    
+    public init() {}
     
     // Info
-    public func info(id: Int? = nil, params: HttpParametable? = nil, token: String? = nil) -> Promise<Object> {
+    open func info(id: Int? = nil, params: HttpParametable? = nil, token: String? = nil) -> Promise<Object> {
         
         return Promise(on: .global()) { () -> Object in
             
@@ -49,7 +51,7 @@ public class RestfulApiService<Object: Mappable, List: ListResponsable>: Restful
     }
     
     // List
-    public func list(params: HttpParametable? = nil, token: String? = nil) -> Promise<List> {
+    open func list(params: HttpParametable? = nil, token: String? = nil) -> Promise<List> {
         
         return Promise(on: .global()) { () -> List in
             
@@ -69,7 +71,7 @@ public class RestfulApiService<Object: Mappable, List: ListResponsable>: Restful
     
     // Create
     @discardableResult
-    public func create(params: HttpParametable? = nil, token: String? = nil) -> Promise<Object> {
+    open func create(params: HttpParametable? = nil, token: String? = nil) -> Promise<Object> {
         return Promise(on: .global()) { () -> Object in
             
             let response = try await(
@@ -88,8 +90,8 @@ public class RestfulApiService<Object: Mappable, List: ListResponsable>: Restful
     
     // Update
     @discardableResult
-    public func update(id: Int? = nil, params: HttpParametable? = nil, token: String? = nil) -> Promise<Void> {
-        return Promise(on: .global()) { () -> Void in
+    open func update(id: Int? = nil, params: HttpParametable? = nil, token: String? = nil) -> Promise<Object> {
+        return Promise(on: .global()) { () -> Object in
             
             let response = try await(
                 self.api.request(
@@ -101,13 +103,13 @@ public class RestfulApiService<Object: Mappable, List: ListResponsable>: Restful
                 )
             )
             
-            return response.asVoid()
+            return response.asObject()
         }
     }
     
     // Delete
     @discardableResult
-    public func delete(id: Int? = nil, params: HttpParametable? = nil, token: String? = nil) -> Promise<Void> {
+    open func delete(id: Int? = nil, params: HttpParametable? = nil, token: String? = nil) -> Promise<Void> {
         return Promise(on: .global()) { () -> Void in
             
             let response = try await(

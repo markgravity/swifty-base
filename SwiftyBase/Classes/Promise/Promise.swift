@@ -22,6 +22,18 @@ public func await<Value>(nullable promise: Promise<Value>?) throws -> Value? {
     return nil
 }
 
+public func await<Value>(onMainThread promise: Promise<Value>) throws -> Value {
+    let _promise = Promise<Value>.pending()
+    promise.then {
+        promise.fulfill($0)
+    }
+    .catch {
+        promise.reject($0)
+    }
+    
+    return try await(_promise)
+}
+
 // MARK: - Extension
 public extension Promise {
     

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mobiclix. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 public class PresentThenPopSegue: UIStoryboardSegue {
@@ -13,3 +14,4 @@ public class PresentThenPopSegue: UIStoryboardSegue {
         source.present(destination, animated: true)
     }
 }
+#endif

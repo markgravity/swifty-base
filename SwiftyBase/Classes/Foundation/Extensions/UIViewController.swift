@@ -6,7 +6,10 @@
 //  Copyright © 2018 Mobiclix. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+import Promises
+import RxSwift
 
 public extension UIViewController {
     func performSegue<T>(withType: T.Type, sender: Any?){
@@ -33,4 +36,34 @@ public extension UIViewController {
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
+    
+    func dismissAllPresentedViewControllers(animated: Bool) -> Promise<Void> {
+        var controllers = [UIViewController]()
+        var controller = presentedViewController
+        while controller != nil {
+            controllers.append(controller!)
+            controller = controller?.presentedViewController
+        }
+        
+        var main = Observable.just(())
+        for controller in controllers.reversed() {
+            let observable = Observable<Void>.deferred {
+                Observable.create { ob in
+                    controller.dismiss(animated: animated, completion: {
+                        ob.onNext(())
+                        ob.onCompleted()
+                    })
+                    
+                    return Disposables.create()
+                }
+            }
+            
+            main = main.flatMap {
+                observable
+            }
+        }
+        
+        return main.first
+    }
 }
+#endif

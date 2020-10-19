@@ -6,6 +6,7 @@
 //  Copyright © 2020 Mobiclix. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 import SwiftRichString
 import RxSwift
@@ -13,16 +14,20 @@ import RxCocoa
 
 // MARK: UILabel
 public extension UILabel {
+    var baseStyle: Style {
+        Style { [unowned self] in
+            $0.font = self.font
+            $0.color = self.textColor
+            $0.alignment = self.textAlignment
+        }
+    }
+    
     var xmlText: String? {
         set {
-            let normal = Style { [unowned self] in
-                $0.font = self.font
-                $0.color = self.textColor
-                $0.alignment = self.textAlignment
-            }
+            let normal = baseStyle
             
             let group = StyleXML(base: normal, [:])
-            group.xmlAttributesResolver = BaseXmlAttributesResolver()
+            group.xmlAttributesResolver = BaseXmlAttributesResolver.default
             attributedText = newValue?.set(style: group)
         }
         
@@ -46,7 +51,7 @@ public extension Reactive where Base: UILabel {
 
 // MARK: - UITextView
 public extension UITextView {
-    var style: Style {
+    var baseStyle: Style {
         Style { [unowned self] in
             $0.font = self.font
             $0.color = self.textColor
@@ -56,10 +61,10 @@ public extension UITextView {
     
     var xmlText: String? {
         set {
-            let normal = style
+            let normal = baseStyle
             
             let group = StyleXML(base: normal, [:])
-            group.xmlAttributesResolver = BaseXmlAttributesResolver()
+            group.xmlAttributesResolver = BaseXmlAttributesResolver.default
             attributedText = newValue?.set(style: group)
         }
         
@@ -72,7 +77,7 @@ public extension UITextView {
 
 // MARK: - UIButton
 public extension UIButton {
-    var style: Style {
+    var baseStyle: Style {
         Style { [unowned self] in
             $0.font = self.titleLabel?.font
             $0.alignment = self.titleLabel?.textAlignment ?? .center
@@ -80,12 +85,12 @@ public extension UIButton {
     }
     
     func setXMLTitle(xml: String, for state: UIControl.State) {
-        let normal = style
+        let normal = baseStyle
         let textColor = titleColor(for: state)
         normal.color = textColor
         
         let group = StyleXML(base: normal, [:])
-        group.xmlAttributesResolver = BaseXmlAttributesResolver()
+        group.xmlAttributesResolver = BaseXmlAttributesResolver.default
         
         let attributedTitle = xml.set(style: group)
         setAttributedTitle(attributedTitle, for: state)
@@ -96,9 +101,14 @@ public extension UIButton {
 
 // MARK: - Resolver
 open class BaseXmlAttributesResolver: StandardXMLAttributesResolver {
+    public static var `default` = BaseXmlAttributesResolver()
     
     open func fontForBold(with point: CGFloat) -> UIFont {
         UIFont.systemFont(ofSize: point)
+    }
+    
+    open func fontForItalic(with point: CGFloat) -> UIFont {
+        UIFont.italicSystemFont(ofSize: point)
     }
     
     override open func styleForUnknownXMLTag(_ tag: String, to attributedString: inout AttributedString, attributes: [String : String]?, fromStyle: StyleXML) {
@@ -126,6 +136,19 @@ open class BaseXmlAttributesResolver: StandardXMLAttributesResolver {
                 $0.font = self.fontForBold(with: font.pointSize)
             }
             attributedString.add(style: style)
+            
+        case "i":
+            guard let font = attributedString.attribute(
+                .font,
+                at: 0,
+                longestEffectiveRange: nil,
+                in: NSRange(location: 0, length: attributedString.length)
+            ) as? UIFont else { return }
+            
+            let style = Style { [unowned self] in
+                $0.font = self.fontForItalic(with: font.pointSize)
+            }
+            attributedString.add(style: style)
 
         case "u":
             
@@ -151,3 +174,4 @@ open class BaseXmlAttributesResolver: StandardXMLAttributesResolver {
         }
     }
 }
+#endif

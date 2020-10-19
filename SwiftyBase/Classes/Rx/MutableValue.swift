@@ -72,3 +72,23 @@ public class MutableValue<Element>: ValueObservable<Element> {
         accept(value)
     }
 }
+
+public extension MutableValue where Element == Bool {
+    func invert() {
+        accept(!value)
+    }
+}
+
+public extension ObservableType {
+    func bind(to value: MutableValue<Element>) -> Disposable {
+        bind {
+            value.accept($0)
+        }
+    }
+    
+    func bind(to value: MutableValue<Element?>) -> Disposable {
+        bind {
+            value.accept($0)
+        }
+    }
+}

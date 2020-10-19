@@ -11,27 +11,25 @@ import ObjectMapper
 import SwiftyJSON
 
 public struct ApiResponse {
-    public let response: [String:JSON]
+    public let response: JSONDict
     
-    public init(response: [String:JSON]) {
+    public init(response: JSONDict) {
         self.response = response
     }
     
     public func asObject<T: Mappable>() -> T {
-        return T(JSON: response["data"]!.dictionaryObject!)!
+        return T(JSON: response["data"] as! [String : Any])!
+    }
+    
+    public func asObject<T: Mappable>() -> T? {
+        guard let data = response["data"] as? [String : Any]
+        else { return nil }
+        return T(JSON: data)
     }
     
     public func asList<T: ListResponsable>() -> T {
         
-        // TODO: Use ListResponsable(JSON:) insteads
-        guard let items = response["data"]?.arrayObject?.map ({
-            T.Element(JSON: $0 as! [String:Any])!
-        }) else {
-            return ListResponse<T.Element>() as! T
-        }
-        let list = ListResponse(items: items)
-       
-        return list as! T
+        return T.init(JSON: response)!
     }
     
     public func asVoid()-> Void {

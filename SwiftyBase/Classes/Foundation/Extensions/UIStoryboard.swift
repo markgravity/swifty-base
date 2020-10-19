@@ -15,10 +15,15 @@ public extension UIStoryboard {
         return instantiateViewController(withIdentifier:  name) as! T
     }
     
-    func instantiateViewController<T>( withNavigationOf type:T.Type)-> UINavigationController{
+    func instantiateViewController<T>( withNavigationOf type:T.Type)-> (UINavigationController, T){
         var name =  "\(T.self)".replacingOccurrences(of: ".Type", with: "")
         name = name.replacingOccurrences(of: "Controller", with: "NavigationController")
-        return instantiateViewController(withIdentifier:  name) as! UINavigationController
+        let navigationController = instantiateViewController(withIdentifier:  name) as! UINavigationController
+        
+        return (
+            navigationController,
+            navigationController.topViewController as! T
+        )
     }
 }
 #endif

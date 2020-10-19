@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'SwiftyBase'
+  s.name             = 'SwiftyBaseExtension'
   s.version          = '0.1.0'
   s.summary          = 'A short description of SwiftyBase.'
 
@@ -31,22 +31,25 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '10.0'
   s.macos.deployment_target = '10.15'
   s.swift_versions = '5.0'
+#  s.source_files = 'SwiftyBase/Classes/**/*'
+
   s.source_files = 'SwiftyBase/Classes/**/*'
-  
-  s.source_files = 'SwiftyBase/Classes/**/*'
-  s.dependency 'PromisesSwift'
+  s.exclude_files = [
+  'SwiftyBase/Classes/Foundation/Functions.swift',
+  'SwiftyBase/Classes/Foundation/UI/**/*',
+  'SwiftyBase/Classes/Foundation/Segues/**/*',
+  'SwiftyBase/Classes/Foundation/Extensions/UIView.swift',
+  'SwiftyBase/Classes/Foundation/Extensions/NSLayoutConstraint.swift'
+  ]
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
   s.dependency 'Swinject'
-  s.ios.dependency 'NVActivityIndicatorView', '~> 4.8.0'
-  s.dependency "PureLayout"
   s.dependency "SwiftRichString"
   s.dependency 'Alamofire'
   s.dependency 'ObjectMapper'
   s.dependency 'SwiftyJSON'
-  s.ios.dependency "Gradients"
   s.dependency 'L10n-swift'
-  s.ios.dependency 'UIWindowTransitions'
   s.dependency 'RxSwiftExt'
   s.dependency 'UIColor_Hex_Swift'
+  s.dependency 'PromisesSwift'
 end

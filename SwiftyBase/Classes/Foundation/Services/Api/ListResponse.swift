@@ -10,24 +10,24 @@ import ObjectMapper
 
 public protocol ListResponsable: Mappable {
     associatedtype Element: Mappable
-    var items: [Element] { get }
+    var items: [Element] { get set }
 }
 
-public class ListResponse<E: Mappable>: ListResponsable {
-    public required init?(map: Map) {
-        self.items = []
-    }
-    
-    
-    public typealias Element = E
-    public let items: [E]
-    
-    
-    public init(items: [E] = [E]()) {
-        self.items = items
-    }
-    
-    public func mapping(map: Map) {
-        items >>> map["data"]
-    }
-}
+//public class ListResponse<E: Mappable>: ListResponsable {
+//    public required init?(map: Map) {
+//        self.items = []
+//    }
+//    
+//    
+//    public typealias Element = E
+//    public let items: [E]
+//    
+//    
+//    public init(items: [E] = [E]()) {
+//        self.items = items
+//    }
+//    
+//    public func mapping(map: Map) {
+//        items >>> map["data"]
+//    }
+//}

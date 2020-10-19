@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mobiclix. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 public class PushAtBeginSegue: UIStoryboardSegue {
@@ -31,3 +32,4 @@ public class PushAtBeginSegue: UIStoryboardSegue {
         UIApplication.shared.delegate?.window??.rootViewController = destination
     }
 }
+#endif

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import Promises
 import ObjectMapper
-import SwiftyBase
+import SwiftyJSON
 
 public typealias HttpHeaders = HTTPHeaders
 public typealias HttpMethod = HTTPMethod
@@ -48,6 +48,15 @@ public protocol HttpService {
         headers: HTTPHeaders?,
         interceptor: RequestInterceptor?
     ) -> Promise<Data>
+    
+    func download(
+        method: HTTPMethod,
+        baseUrl: String,
+        endPoint: String,
+        params: HttpParametable?,
+        headers: HTTPHeaders?,
+        interceptor: RequestInterceptor?
+    ) -> Promise<URL>
 }
 
 public class HttpServiceImpl: HttpService {
@@ -97,12 +106,25 @@ public class HttpServiceImpl: HttpService {
         
         let formData = MultipartFormData()
         for item in params.toFormData() {
-            formData.append(
-                item.data,
-                withName: item.name,
-                fileName: item.fileName,
-                mimeType: item.mimeType?.rawValue
-            )
+                
+            // File
+            if let file = item.file {
+                formData.append(file, withName: item.name)
+                continue
+            }
+            
+            // Data
+            if let data = item.data {
+                formData.append(
+                    data,
+                    withName: item.name,
+                    fileName: item.fileName,
+                    mimeType: item.mimeType?.rawValue
+                )
+                
+                continue
+            }
+            
         }
         
         let request = Self._session.upload(
@@ -115,6 +137,66 @@ public class HttpServiceImpl: HttpService {
         
         // Execute the request
         return _excute(request: request)
+    }
+    
+    public func download(
+        method: HTTPMethod,
+        baseUrl: String,
+        endPoint: String,
+        params: HttpParametable?,
+        headers: HTTPHeaders? = nil,
+        interceptor: RequestInterceptor? = nil
+    ) -> Promise<URL> {
+        
+//        // Create request
+//        var encoding: HttpParamsEncoding = params?.encoding ?? JsonParamsEncoding.default
+//
+//        // Encoding for get request must be UrlParamsEncoding
+//        if method == .get
+//            && !(encoding is UrlParamsEncoding) {
+//            encoding = UrlParamsEncoding.default
+//        }
+        
+        let promise = Promise<URL>.pending()
+        Self._session.download(
+            "\(baseUrl)\(endPoint)",
+            method: method,
+            parameters: params?.toJSON(),
+            headers: headers,
+            interceptor: interceptor,
+            to: nil
+        ).responseData {
+            guard
+                $0.response?.statusCode == 200,
+                let url = $0.fileURL else {
+                
+                if let error = $0.error {
+                    promise.reject($0.error!)
+                    return
+                }
+                
+                // Parse response error
+                if let data = $0.value,
+                   let json = try? JSON(data: data),
+                   let error = json.dictionary?["error"]?.dictionary,
+                   let code = error["code"]?.int,
+                   let message = error["message"]?.string {
+                    let exception = HttpException(error: nil, code: code, message: message)
+                    promise.reject(exception)
+                    return
+                }
+                
+                // Unknown
+                promise.reject(
+                    HttpException.init(error: nil, code: 0, message: nil)
+                )
+                return
+            }
+            
+            promise.fulfill(url)
+        }
+        
+        return promise
     }
     
     fileprivate func _excute(request: DataRequest) -> Promise<Data> {

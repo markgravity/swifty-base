@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mobiclix. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 public class PopThenPushSegue: UIStoryboardSegue {
@@ -15,3 +16,4 @@ public class PopThenPushSegue: UIStoryboardSegue {
         navigationController?.pushViewController(destination, animated: true)
     }
 }
+#endif

@@ -241,6 +241,19 @@ public extension UIView {
         view.autoPinEdgesToSuperviewEdges()
     }
     
+    func rotate(duration: CFTimeInterval = 1.0) {
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat.pi * 2
+        rotateAnimation.duration = duration
+        rotateAnimation.repeatCount = Float.infinity
+        self.layer.add(rotateAnimation, forKey: "animation.rotation")
+    }
+    
+    func stopRotating(){
+        self.layer.removeAnimation(forKey: "animation.rotation")
+    }
+    
 }
 
 // MARK: Constraints
