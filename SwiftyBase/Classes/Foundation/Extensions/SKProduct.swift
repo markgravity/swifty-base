@@ -17,6 +17,7 @@ public extension SKProduct {
         return formatter.string(from: price)
     }
     
+    @available(iOS 11.2, *)
     var localizedMonthlyPrice: String? {
         guard
             let unit = self.subscriptionPeriod?.unit,
@@ -35,6 +36,7 @@ public extension SKProduct {
     
 }
 
+@available(iOS 11.2, *)
 extension SKProductDiscount {
     
     var localizedPrice: String? {
@@ -52,6 +54,7 @@ extension SKProductDiscount {
     }
 }
 
+@available(iOS 11.2, *)
 extension SKProductSubscriptionPeriod {
     var unitString: String {
         var text = ""
